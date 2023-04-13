@@ -1,4 +1,4 @@
-package com.example.tpchifoumi;
+package com.example.tpchifoumi.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,12 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = {"/", "/home"})
-public class indexServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/summary")
+public class gameSummaryServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/game-summary.jsp").forward(request, response);
     }
-
 }
