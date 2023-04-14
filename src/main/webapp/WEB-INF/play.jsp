@@ -16,7 +16,7 @@
 <a href="home">Back to menu</a>
 
 <div class="container">
-    <form method="post" action="play">
+    <form method="post" action="{pageContext.request.contextPath}/secured/play">
         <button type="submit" value="SHI" name="player-choice" class="btn btn-primary">SHI</button>
         <button type="submit" value="FOU" name="player-choice" class="btn btn-secondary">FOU</button>
         <button type="submit" value="MI" name="player-choice" class="btn btn-danger">MI</button>

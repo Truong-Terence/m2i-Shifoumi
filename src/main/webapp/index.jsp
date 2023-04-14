@@ -10,5 +10,15 @@
         <h1>Shifoumi</h1>
         <br/>
         <a href="play">Play the game</a>
+
+
+        <form action="${pageContext.request.contextPath}/secured" method="post">
+            <input type="text" name="firstnameInput" placeholder="Your firstname..">
+            <button type="submit">Ok</button>
+        </form>
+
+        <a href="${pageContext.request.contextPath}/secured/logout">Close Session</a>
+
+<%--TODO Changer les routes | filtres--%>
     </body>
 </html>
