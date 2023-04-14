@@ -17,9 +17,9 @@
 
 <div class="container">
     <form method="post" action="play">
-        <button type="submit" value="SHI" name="shi" class="btn btn-primary">SHI</button>
-        <button type="submit" value="FOU" name="fou" class="btn btn-secondary">FOU</button>
-        <button type="submit" value="MI" name="mi" class="btn btn-danger">MI</button>
+        <button type="submit" value="SHI" name="player-choice" class="btn btn-primary">SHI</button>
+        <button type="submit" value="FOU" name="player-choice" class="btn btn-secondary">FOU</button>
+        <button type="submit" value="MI" name="player-choice" class="btn btn-danger">MI</button>
     </form>
 </div>
 </body>

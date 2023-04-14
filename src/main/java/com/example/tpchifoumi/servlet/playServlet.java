@@ -2,6 +2,7 @@ package com.example.tpchifoumi.servlet;
 
 import java.io.*;
 
+import com.example.tpchifoumi.Treatment;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -15,22 +16,19 @@ public class playServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Recupere les données provenant du formulaire
-        String choice = null;
-        if (!(null == request.getParameter("shi"))) {
-            choice = request.getParameter("shi");
-        } else if (!(null == request.getParameter("fou"))) {
-            choice = request.getParameter("fou");
-        } else if (!(null == request.getParameter("mi"))) {
-            choice = request.getParameter("mi");
-        }
+        // Recupere les données provenant du formulaire + Random
+        String pChoice = request.getParameter("player-choice");
+        String sChoice = Treatment.getRandomChoice();
+        String result = Treatment.getResult(pChoice, sChoice);
+        System.out.println(pChoice);
+        System.out.println(sChoice);
+        System.out.println(result);
 
-        request.setAttribute("choice", choice);
+        request.setAttribute("pChoice", pChoice);
+        request.setAttribute("sChoice", sChoice);
+        request.setAttribute("result", result);
 
-        // Redirige vers la page /posts
-//        response.sendRedirect("summary");
+        // Redirige vers la page /game-summary
         request.getRequestDispatcher("/WEB-INF/game-summary.jsp").forward(request, response);
-
-        System.out.println(choice);
     }
 }
