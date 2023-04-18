@@ -1,4 +1,4 @@
-package com.example.tpchifoumi;
+package com.example.tpchifoumi.service;
 
 import jakarta.servlet.http.HttpServlet;
 

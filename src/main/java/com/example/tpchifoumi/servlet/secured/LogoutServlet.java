@@ -1,4 +1,4 @@
-package com.example.tpchifoumi.servlet;
+package com.example.tpchifoumi.servlet.secured;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,9 +9,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/secured/logout")
+@WebServlet(urlPatterns = LogoutServlet.URL)
 public class LogoutServlet extends HttpServlet {
 
+    public static final String URL = "/secured/logout";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

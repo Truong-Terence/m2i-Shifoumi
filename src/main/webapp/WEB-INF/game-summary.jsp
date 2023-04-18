@@ -11,11 +11,10 @@ o D’un message affichant qui a gagné
 o D’un bouton rejouer pour relancer le jeu
 --%>
 <h1>GAME SUMMARY</h1>
-<a href="home">Back to menu</a>
-<a href="play">Play again</a>
+<a href="/"><button type="button" class="btn btn-primary">Back to menu</button></a>
+<a href="/secured/play"><button type="button" class="btn btn-warning">Play again</button></a>
 
-<p>You played ${pChoice}</p>
-<p>Server played ${sChoice}</p>
+<p>${pChoice} vs ${sChoice}</p>
 <p>${result} !</p>
 
 </body>

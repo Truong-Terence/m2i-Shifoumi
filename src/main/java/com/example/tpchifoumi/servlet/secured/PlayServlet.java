@@ -1,15 +1,17 @@
-package com.example.tpchifoumi.servlet;
+package com.example.tpchifoumi.servlet.secured;
 
 import java.io.*;
 
-import com.example.tpchifoumi.Treatment;
+import com.example.tpchifoumi.service.Treatment;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(urlPatterns = "/play")
-public class playServlet extends HttpServlet {
+@WebServlet(urlPatterns = PlayServlet.URL)
+public class PlayServlet extends HttpServlet {
+    public static final String URL = "/secured/play";
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/play.jsp").forward(request, response);
     }
@@ -20,9 +22,6 @@ public class playServlet extends HttpServlet {
         String pChoice = request.getParameter("player-choice");
         String sChoice = Treatment.getRandomChoice();
         String result = Treatment.getResult(pChoice, sChoice);
-        System.out.println(pChoice);
-        System.out.println(sChoice);
-        System.out.println(result);
 
         request.setAttribute("pChoice", pChoice);
         request.setAttribute("sChoice", sChoice);
@@ -30,5 +29,6 @@ public class playServlet extends HttpServlet {
 
         // Redirige vers la page /game-summary
         request.getRequestDispatcher("/WEB-INF/game-summary.jsp").forward(request, response);
+//        response.sendRedirect(request.getContextPath() + "/secured/play");
     }
 }

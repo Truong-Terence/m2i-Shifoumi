@@ -1,5 +1,7 @@
-package com.example.tpchifoumi.servlet;
+package com.example.tpchifoumi.servlet.anonymous;
 
+import com.example.tpchifoumi.model.User;
+import com.example.tpchifoumi.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,8 +11,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(urlPatterns = LoginServlet.URL)
 public class LoginServlet extends HttpServlet {
+
+    public static final String URL = "/login";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -21,9 +25,12 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if (username.equals("Térence") && password.equals("Truong")) {
+        UserService userService = new UserService();
+        User user = userService.login(username, password);
+
+        if (user != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("username", "Térence");
+            session.setAttribute("username", user.getUsername());
             response.sendRedirect(request.getContextPath() + "/");
         } else {
             request.setAttribute("isError", true);
